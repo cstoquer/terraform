@@ -173,7 +173,7 @@ proto.get = function (x, y) {
 	var amp = 1.0;
 
 	for (var o = 0; o < this.octaves; o += 1) {
-		noise += this.generateNoise(x, y) * amp;
+		noise += this.generate(x, y) * amp;
 		x *= this.frequency;
 		y *= this.frequency;
 		amp *= this.persistance;
