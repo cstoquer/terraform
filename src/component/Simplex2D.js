@@ -1,4 +1,4 @@
-/**
+/**▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
  * @classdesc 2-dimensional Simplex Noise
  * @class
  *
@@ -89,6 +89,9 @@ var perm = [
 var f2 = 0.5 * (Math.sqrt(3.0) - 1.0);
 var g2 = (3.0 - Math.sqrt(3.0)) / 6.0;
 
+/**▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+ *
+ */
 Simplex2D.prototype.generate = function (xin, yin) {
 	var n0, n1, n2; // Noise contributions from the three corners
 
@@ -160,8 +163,11 @@ Simplex2D.prototype.generate = function (xin, yin) {
 	return 70.0 * (n0 + n1 + n2);
 };
 
-// Complexity in O(o)
-// with o the number of octaves
+/**▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+ *
+ * Complexity in O(o)
+ * with o the number of octaves
+ */
 proto.get = function (x, y) {
 	var noise = 0;
 	var amp = 1.0;
