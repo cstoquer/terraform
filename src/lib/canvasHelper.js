@@ -39,16 +39,16 @@ function createAndAppendCanvas(width, height, zIndex) {
 (function () {var proto = window.CanvasRenderingContext2D.prototype;
 
 proto.$setAlpha = function (alpha) {
-	this.globalAlpha = alpha; // TODO: obfuscate propertie name ?
+	this.globalAlpha = alpha;
 };
 proto.$setBlend = function (mode) {
-	this.globalCompositeOperation = mode; // TODO: obfuscate propertie name ?
+	this.globalCompositeOperation = mode;
 };
 proto.$setFill = function (style) {
-	this.fillStyle = style; // TODO: obfuscate propertie name ?
+	this.fillStyle = style;
 };
 proto.$setStroke = function (style) {
-	this.strokeStyle = style; // TODO: obfuscate propertie name ?
+	this.strokeStyle = style;
 };
 
 proto.$clear = function (color) {
