@@ -1,0 +1,21 @@
+{
+    "name": "terraform",
+    "version": "0.0.1",
+    "description": "terrain generator",
+    "author": "Cedric Stoquer",
+    "contributors": [
+        "Brice Chevalier"
+    ],
+    "license": "MIT",
+    "repository": "https://github.com/cstoquer/terraform",
+    "main": "index.js",
+    "engines": {
+        "node": "0.10.25"
+    },
+    "dependencies": {
+        "love": "https://github.com/cstoquer/love/archive/0.0.7.tar.gz"
+    },
+    "scripts": {
+        "start": "node . -s src -d"
+    }
+}
