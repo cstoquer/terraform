@@ -15,6 +15,9 @@ preloadAssets(function (error, assets) {
 		base:        0
 	});
 
+	var seed = ~(80000 * Math.random());
+	perlin.seed(seed);
+
 	// var log = {};
 	for (var x = 0; x < 400; x++) {
 		for (var y = 0; y < 400; y++) {
