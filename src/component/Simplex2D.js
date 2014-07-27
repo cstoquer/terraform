@@ -31,26 +31,14 @@ function Simplex2D(params) {
 	this.seed(params.seed || 0);
 }
 
-(function(){
-var proto = Simplex2D.prototype;
+//▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+(function(){ var proto = Simplex2D.prototype;
 
 var grad = [
-	[1, 1],
-	[-1, 1],
-	[1, -1],
-	[-1, -1],
-	[1, 0],
-	[-1, 0],
-	[1, 0],
-	[-1, 0],
-	[0, 1],
-	[0, -1],
-	[0, 1],
-	[0, -1],
-	[1, 1],
-	[-1, 1],
-	[1, -1],
-	[-1, -1]
+	[1, 1], [-1,  1], [1, -1], [-1, -1],
+	[1, 0], [-1,  0], [1,  0], [-1,  0],
+	[0, 1], [ 0, -1], [0,  1], [ 0, -1],
+	[1, 1], [-1,  1], [1, -1], [-1, -1]
 ];
 
 
@@ -61,7 +49,7 @@ var g2 = (3.0 - Math.sqrt(3.0)) / 6.0;
 /**▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
  *
  */
-Simplex2D.prototype.seed = function (seedNumber) {
+proto.seed = function (seedNumber) {
 	var i;
 
 	// reset permutation table
@@ -86,7 +74,7 @@ Simplex2D.prototype.seed = function (seedNumber) {
 /**▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
  *
  */
-Simplex2D.prototype.generate = function (xin, yin) {
+proto.generate = function (xin, yin) {
 	var n0, n1, n2; // Noise contributions from the three corners
 	var perm = this.perm; // permutation table
 
