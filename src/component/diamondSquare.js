@@ -48,9 +48,9 @@ function mpdIterate(base, base_n, r) {
 	}
 
 	// Diamond algorithm
-	// 0 0 0
+	// a 0 b
 	// 0 X 0
-	// 0 0 0
+	// c 0 d
 	for (var i = 1; i < n; i += 2) {
 		for (var j = 1; j < n; j += 2) {
 			var a = map[i - 1][j - 1];
