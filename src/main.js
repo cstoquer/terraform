@@ -8,8 +8,8 @@
 preloadAssets(function (error, assets) {
 	if (error) return console.error(error);
 
-	VoronoiTest(800, 600);
-	return;
+	// VoronoiTest(800, 600);
+	// return;
 
 
 	var SIZE = 512;
@@ -18,10 +18,10 @@ preloadAssets(function (error, assets) {
 	ctx.$clear('#000');
 	var seed = ~(80000 * Math.random());
 	var perlin = new Simplex2D({
-		octaves:     3,
+		octaves:     6,
 		amplitude:   1,
-		frequency:   8,
-		persistance: 0.7,
+		frequency:   6,
+		persistance: 0.3,
 		base:        0,
 		seed:        seed
 	});

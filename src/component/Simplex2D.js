@@ -68,10 +68,10 @@ proto.seed = function (seedNumber) {
 	}
 
 	// concat the table with itself to duplicate the permutations
-	perm = perm.concat(perm);
-	console.log(JSON.stringify(perm));
+	// perm = perm.concat(perm);
+	// console.log(JSON.stringify(perm));
 
-	return;
+	// return;
 	this.perm = [
 		182, 235, 131, 26, 88, 132, 100, 117, 202, 176, 10, 19, 83, 243, 75, 52,
 		252, 194, 32, 30, 72, 15, 124, 53, 236, 183, 121, 103, 175, 39, 253, 120,
