@@ -3,8 +3,14 @@
 #INCLUDE(Simplex2D)
 #INCLUDE(diamondSquare)
 
+#INCLUDE(VoronoiTest)
+
 preloadAssets(function (error, assets) {
 	if (error) return console.error(error);
+
+	VoronoiTest(800, 600);
+	return;
+
 
 	var SIZE = 512;
 
