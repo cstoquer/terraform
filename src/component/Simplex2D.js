@@ -39,6 +39,10 @@ var grad = [
 	[1, 0], [-1,  0], [1,  0], [-1,  0],
 	[0, 1], [ 0, -1], [0,  1], [ 0, -1],
 	[1, 1], [-1,  1], [1, -1], [-1, -1]
+	// [0.7, 0.1], [-0.1,  0.4], [0.2, -0.7], [-0.3, -0.2],
+	// [0.5, -0.2], [-0.6,  0.4], [0.3,  0.6], [-0.9,  0.1],
+	// [0.2, 1.0], [ 0.3, -1.0], [0.2,  1.0], [ 0.1, -0.9],
+	// [0.7, 0.8], [-0.9,  0.4], [1.0, -1.0], [-0.3, -0.7]
 ];
 
 
@@ -50,7 +54,7 @@ var g2 = (3.0 - Math.sqrt(3.0)) / 6.0;
  *
  */
 proto.seed = function (seedNumber) {
-	var i;
+	/*var i;
 
 	// reset permutation table
 	var perm = this.perm = [];
@@ -68,10 +72,11 @@ proto.seed = function (seedNumber) {
 	}
 
 	// concat the table with itself to duplicate the permutations
-	// perm = perm.concat(perm);
+	perm = perm.concat(perm);
 	// console.log(JSON.stringify(perm));
 
-	// return;
+	return;*/
+
 	this.perm = [
 		182, 235, 131, 26, 88, 132, 100, 117, 202, 176, 10, 19, 83, 243, 75, 52,
 		252, 194, 32, 30, 72, 15, 124, 53, 236, 183, 121, 103, 175, 39, 253, 120,
