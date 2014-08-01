@@ -11,8 +11,9 @@ preloadAssets(function (error, assets) {
 	// VoronoiTest(800, 600);
 	// return;
 
-	var SIZE = 512;
-	var ZOOM = 60;
+	var SIZE = 1 << 9;
+	var ZOOM = 10;
+	var SEA_LEVEL = 0.5;
 
 	var ctx = createAndAppendCanvas(SIZE, SIZE).$ctx;
 	ctx.$clear('#000');
@@ -124,20 +125,22 @@ preloadAssets(function (error, assets) {
 		return oMin + (oMax - oMin) * (value - iMin) / (iMax - iMin);
 	}
 
-	// var diamond = diamondSquare();
+	/*var diamond = diamondSquare();
 
-	/*for (var x = 0; x < SIZE; x++) {
+	for (var x = 0; x < SIZE; x++) {
 		for (var y = 0; y < SIZE; y++) {
 			
-			var value = carrier.get(x / SIZE, y / SIZE);
-			// var value = 0.5 + diamond[x][y] / 256;
+			// var value = carrier.get(x / SIZE, y / SIZE);
+			var value = 0.5 + diamond[x][y] / 256;
 
-			var color = value < 0.5 ? 'rgb(10,60,' + ~~map(value, 0, 0.5, 30, 255) + ')' : 'rgb(' + ~~map(value, 0.5, 1, 40, 255) + ',0,0)';
+			// var color = value < 0.5 ? 'rgb(10,60,' + ~~map(value, 0, 0.5, 30, 255) + ')' : 'rgb(' + ~~map(value, 0.5, 1, 40, 255) + ',0,0)';
+			var color = value < SEA_LEVEL ? 'rgb(10,20,' + ~~map(value, 0, SEA_LEVEL, 200, 255) + ')' : 'rgb(' + ~~map(value, SEA_LEVEL, 1.5, 40, 255) + ',0,0)';
 			// var color = ~~(value * 255);
 			ctx.$setFill(color);
 			ctx.$fillRect(x, y, 1, 1);
 		}
-	}*/
+	}
+	return;*/
 
 	for (var x = 0; x < SIZE; x++) {
 		for (var y = 0; y < SIZE; y++) {
@@ -156,7 +159,6 @@ preloadAssets(function (error, assets) {
 			carrier.base = modB1 + modB2 - modB3;
 			var value = carrier.get(modX * ZOOM * x / SIZE, modY * ZOOM * y / SIZE);
 
-			var SEA_LEVEL = 0.5;
 
 			var color = value < SEA_LEVEL ? 'rgb(10,20,' + ~~map(value, 0, SEA_LEVEL, 200, 255) + ')' : 'rgb(' + ~~map(value, SEA_LEVEL, 1.5, 40, 255) + ',0,0)';
 			ctx.$setFill(color);
