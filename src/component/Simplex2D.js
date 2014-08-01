@@ -27,6 +27,12 @@ function Simplex2D(params) {
 	// The base is used to put the noise value in the interval [base; amplitude + base]
 	this.base = (params.base || 0) + this.amplitude / 2;
 
+	// noise scale and offset
+	this.scaleX = params.scaleX || params.scale || 1;
+	this.scaleY = params.scaleY || params.scale || 1;
+	this.offsetX = params.offsetX || 0;
+	this.offsetY = params.offsetY || 0;
+
 	// initialize the permutation table
 	this.seed(params.seed || 0);
 }
@@ -39,16 +45,35 @@ var grad = [
 	[1, 0], [-1,  0], [1,  0], [-1,  0],
 	[0, 1], [ 0, -1], [0,  1], [ 0, -1],
 	[1, 1], [-1,  1], [1, -1], [-1, -1]
-	// [0.7, 0.1], [-0.1,  0.4], [0.2, -0.7], [-0.3, -0.2],
-	// [0.5, -0.2], [-0.6,  0.4], [0.3,  0.6], [-0.9,  0.1],
-	// [0.2, 1.0], [ 0.3, -1.0], [0.2,  1.0], [ 0.1, -0.9],
-	// [0.7, 0.8], [-0.9,  0.4], [1.0, -1.0], [-0.3, -0.7]
 ];
 
 
 var f2 = 0.5 * (Math.sqrt(3.0) - 1.0);
 var g2 = (3.0 - Math.sqrt(3.0)) / 6.0;
 
+
+/**▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+ * Update noise scale
+ *
+ * @param {Number} sx - x scale
+ * @param {Number} sy - y scale
+ */
+proto.scale = function (sx, sy) {
+	this.scaleX = sx || 0;
+	this.scaleY = sy || sx || 0;
+};
+
+
+/**▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+ * Update noise offset
+ *
+ * @param {Number} x - x offset
+ * @param {Number} y - y offset
+ */
+proto.offset = function (x, y) {
+	if (x || x === 0) this.offsetX = x;
+	if (y || y === 0) this.offsetY = y;
+};
 
 /**▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
  *
@@ -198,6 +223,9 @@ proto.generate = function (xin, yin) {
 proto.get = function (x, y) {
 	var noise = 0;
 	var amp = 1.0;
+
+	x = this.offsetX + x * this.scaleX;
+	y = this.offsetY + y * this.scaleY;
 
 	for (var o = 0; o < this.octaves; o += 1) {
 		noise += this.generate(x, y) * amp;

@@ -12,11 +12,15 @@ preloadAssets(function (error, assets) {
 	// return;
 
 	var SIZE = 512;
-	var ZOOM = 30;
+	var ZOOM = 60;
 
 	var ctx = createAndAppendCanvas(SIZE, SIZE).$ctx;
 	ctx.$clear('#000');
 	// var seed = ~(80000 * Math.random());
+
+	function getRandomSeed() {
+		return ~~(80000 * Math.random());
+	}
 
 	var modulator1 = new Simplex2D({
 		octaves:     6,
@@ -24,7 +28,8 @@ preloadAssets(function (error, assets) {
 		frequency:   5.8,
 		persistance: 0.4,
 		base:        0,
-		seed:        ~~(80000 * Math.random())
+		scale:       0.19 * ZOOM / SIZE,
+		seed:        getRandomSeed()
 	});
 
 	var modulator2 = new Simplex2D({
@@ -33,7 +38,8 @@ preloadAssets(function (error, assets) {
 		frequency:   3,
 		persistance: 0.5,
 		base:        0,
-		seed:        ~~(80000 * Math.random())
+		scale:       0.41 * ZOOM / SIZE,
+		seed:        getRandomSeed()
 	});
 
 	var modulator3 = new Simplex2D({
@@ -42,7 +48,8 @@ preloadAssets(function (error, assets) {
 		frequency:   3,
 		persistance: 0.5,
 		base:        0,
-		seed:        ~~(80000 * Math.random())
+		scale:       0.25 * ZOOM / SIZE,
+		seed:        getRandomSeed()
 	});
 
 	var modulatorB1 = new Simplex2D({
@@ -51,7 +58,10 @@ preloadAssets(function (error, assets) {
 		frequency:   0.02,
 		persistance: 0.2,
 		base:        0,
-		seed:        ~~(80000 * Math.random())
+		scale:       0.05 * ZOOM / SIZE,
+		offsetX:     46.5,
+		offsetY:     7.6,
+		seed:        getRandomSeed()
 	});
 
 	var modulatorB2 = new Simplex2D({
@@ -60,7 +70,10 @@ preloadAssets(function (error, assets) {
 		frequency:   0.02,
 		persistance: 0.2,
 		base:        0,
-		seed:        ~~(80000 * Math.random())
+		scale:       0.05 * ZOOM / SIZE,
+		offsetX:     2.1,
+		offsetY:     49.1,
+		seed:        getRandomSeed()
 	});
 
 	var modulatorB3 = new Simplex2D({
@@ -69,7 +82,10 @@ preloadAssets(function (error, assets) {
 		frequency:   0.05,
 		persistance: 0.2,
 		base:        0,
-		seed:        ~~(80000 * Math.random())
+		scale:       0.05 * ZOOM / SIZE,
+		offsetX:     0.0,
+		offsetY:     14.0,
+		seed:        getRandomSeed()
 	});
 
 	var modulatorX = new Simplex2D({
@@ -78,7 +94,8 @@ preloadAssets(function (error, assets) {
 		frequency:   0.1,
 		persistance: 0.4,
 		base:        0,
-		seed:        ~~(80000 * Math.random())
+		scale:       0.03 * ZOOM / SIZE,
+		seed:        getRandomSeed()
 	});
 
 	var modulatorY = new Simplex2D({
@@ -87,7 +104,10 @@ preloadAssets(function (error, assets) {
 		frequency:   0.1,
 		persistance: 0.4,
 		base:        0,
-		seed:        ~~(80000 * Math.random())
+		scale:       0.03 * ZOOM / SIZE,
+		offsetX:     154.0,
+		offsetY:     39.7,
+		seed:        getRandomSeed()
 	});
 
 	var carrier = new Simplex2D({
@@ -96,7 +116,7 @@ preloadAssets(function (error, assets) {
 		frequency:   6,
 		persistance: 0.3,
 		base:        0,
-		seed:        ~~(80000 * Math.random())
+		seed:        getRandomSeed()
 	});
 
 
@@ -122,14 +142,14 @@ preloadAssets(function (error, assets) {
 	for (var x = 0; x < SIZE; x++) {
 		for (var y = 0; y < SIZE; y++) {
 			
-			var mod1 = modulator1.get(0.13 * ZOOM * x / SIZE, 0.13 * ZOOM * y / SIZE);
-			var mod2 = modulator2.get(0.41 * ZOOM * x / SIZE, 0.41 * ZOOM * y / SIZE);
-			var mod3 = modulator3.get(0.25 * ZOOM * x / SIZE, 0.25 * ZOOM * y / SIZE);
-			var modB1 = modulatorB1.get(465 + 0.05 * ZOOM * x / SIZE, 4576 + 0.05 * ZOOM * y / SIZE);
-			var modB2 = modulatorB2.get(546 + 0.05 * ZOOM * x / SIZE, 9324 + 0.05 * ZOOM * y / SIZE);
-			var modB3 = modulatorB3.get(2 + 0.05 * ZOOM * x / SIZE, 45 + 0.05 * ZOOM * y / SIZE);
-			var modX = modulatorX.get(0.03 * ZOOM * x / SIZE, 0.03 * ZOOM * y / SIZE);
-			var modY = modulatorY.get(2345 + 0.03 * ZOOM * x / SIZE, 345 + 0.03 * ZOOM * y / SIZE);
+			var mod1 = modulator1.get(x, y);
+			var mod2 = modulator2.get(x, y);
+			var mod3 = modulator3.get(x, y);
+			var modB1 = modulatorB1.get(x, y);
+			var modB2 = modulatorB2.get(x, y);
+			var modB3 = modulatorB3.get(x, y);
+			var modX = modulatorX.get(x, y);
+			var modY = modulatorY.get(x, y);
 			carrier.persistance = mod1;
 			carrier.frequency = 0.1 + mod2 * 2;
 			carrier.amplitude = mod3;

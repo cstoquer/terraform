@@ -22,7 +22,7 @@ VoronoiTest = function main(width, height) {
 	h = canv.height;
 	v = new Voronoi();
 	
-	for (i = 0; i < 20; i++) {
+	for (i = 0; i < 1; i++) {
 		points.push(new Point(Math.random() * w, Math.random() * h));
 		colors.push(rndCol());
 	}
