@@ -12,7 +12,7 @@ preloadAssets(function (error, assets) {
 	// return;
 
 	var SIZE = 1 << 9;
-	var ZOOM = 10;
+	var ZOOM = 15;
 	var SEA_LEVEL = 0.5;
 
 	var ctx = createAndAppendCanvas(SIZE, SIZE).$ctx;
@@ -117,6 +117,7 @@ preloadAssets(function (error, assets) {
 		frequency:   6,
 		persistance: 0.3,
 		base:        0,
+		scale:       ZOOM / SIZE,
 		seed:        getRandomSeed()
 	});
 
@@ -157,7 +158,7 @@ preloadAssets(function (error, assets) {
 			carrier.frequency = 0.1 + mod2 * 2;
 			carrier.amplitude = mod3;
 			carrier.base = modB1 + modB2 - modB3;
-			var value = carrier.get(modX * ZOOM * x / SIZE, modY * ZOOM * y / SIZE);
+			var value = carrier.get(modX * x, modY * y);
 
 
 			var color = value < SEA_LEVEL ? 'rgb(10,20,' + ~~map(value, 0, SEA_LEVEL, 200, 255) + ')' : 'rgb(' + ~~map(value, SEA_LEVEL, 1.5, 40, 255) + ',0,0)';
