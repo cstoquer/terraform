@@ -1,2 +1,6 @@
 # Ignore node modules dependencies
 node_modules/
+
+# love-generated files
+src/index.js
+src/asset.json
