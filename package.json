@@ -13,7 +13,7 @@
         "node": "0.10.25"
     },
     "dependencies": {
-        "love": "https://github.com/cstoquer/love/archive/0.0.7.tar.gz"
+        "love-js": "0.1.0"
     },
     "scripts": {
         "start": "node . -s src -d"
